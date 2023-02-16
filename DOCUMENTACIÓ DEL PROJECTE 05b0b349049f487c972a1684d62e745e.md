@@ -337,7 +337,7 @@ La fórmula D'Hondt es el procediment matematic que s’utilitza per distribuir 
 
 EXEMPLE: municipi amb 9 regidors a repartir i 10 candidatures, i en el qual s’hane emès 1400 vots vàlids,de la seguent manera:
 
-![Llei d'Hondt.png](DOCUMENTACIO%CC%81%20DEL%20PROJECTE%2005b0b349049f487c972a1684d62e745e/Llei_dHondt.png)
+![Llei_dHondt.png](DOCUMENTACIO%CC%81%20DEL%20PROJECTE%2005b0b349049f487c972a1684d62e745e/Llei_dHondt.png)
 
 En cas d'empat en algun quocient, s'emporta l'escó la candidatura que té més vots en total.
 
