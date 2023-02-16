@@ -1,0 +1,954 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>DOCUMENTACIÓn DEL PROJECTE</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="05b0b349-049f-487c-972a-1684d62e745e" class="page sans"><header><h1 class="page-title">DOCUMENTACIÓ DEL PROJECTE</h1></header><div class="page-body"><h1 id="0df25cff-f06a-4991-b04a-1649096f50a3" class="">Configuració i instal·lació de paquets per connectar Python a la base de dades.</h1><p id="cca2aadb-2c1a-4973-adfb-0942423a2d3b" class="">Per connectar al Python a la nostra base de dades hem d’utilitzar en el CMD amb permisos  d’administrador la seguent comanda:</p><pre id="71b39f34-518b-4c38-9f35-98c4c13185e9" class="code"><code>pip install mysql-connector-pyhton</code></pre><p id="bd2a3551-f321-4d11-a03b-a9e10d1ad5fe" class="">En cas de que la comanda falli pot ser per que la comanda es té que executar en un altre ruta per exemple:</p><pre id="9807f24f-b019-4c84-9ba5-052e5d161aa4" class="code"><code>cd \users\usuario\AppData\Local\Programs\Python\Python310
+
+C:\users\usuario\AppData\Local\Programs\Python\Python310&gt; -m pip install mysql-connector-pyhton</code></pre><p id="1a02ce7c-0be0-460a-9860-8e73f6bb5b20" class="">Si tot a anat correctament amb les comandes especifiques es podria fer la comunicacio amb la base de dades.
+</p><h2 id="d71f7731-09ba-42b1-92fd-4c74f6b7a9bd" class="">Comandes python de la importació</h2><p id="e256a76d-2e5f-4916-967c-b7239022b9c9" class="">La primera taula que hem d’omplenar per poder començar amb els INSERTS és la taula “eleccions”.</p><pre id="f3a2c590-c9db-4cf5-aab5-60c185d93ca9" class="code"><code># Connect to the database
+cnx = mysql.connector.connect(
+    host=&quot;10.94.255.163&quot;,
+    user=&quot;perepi&quot;,
+    password=&quot;pastanaga&quot;,
+    database=&quot;eleccions&quot;
+)
+cursor = cnx.cursor()
+
+# Open the file
+with open(&quot;02021911.DAT&quot;, &quot;r&quot;) as file:
+    # Read each line of the file
+    for line in file:
+        # Strip leading and trailing whitespace from the line
+        data = line.strip()
+        # Extract the values from the data string
+        any = data[2:6]
+        nom = data[0:2].replace(&quot;02&quot;, &quot;Elecciones al Congreso de los Diputados&quot;) + any  
+        mes = data[6:8]
+        data = any + &quot;-&quot; + mes + &quot;-&quot; + data[12:14]
+        query = &quot;INSERT INTO eleccions (nom, data) VALUES (%s, %s)&quot;
+        values = (nom, data)
+        cursor.execute(query, values)
+
+
+# Commit the changes
+cnx.commit()
+
+# Close the cursor and connection
+cursor.close()
+cnx.close()</code></pre><p id="7ffa4f27-9cac-42ec-be98-809b70e62403" class="">
+</p><p id="a26e006d-e8ea-48c6-a168-9ea1765301c1" class="">Ara ja tenim el primer INSERT dintre de la base de dades. La dada “eleccio_id” era necessària per poder continuar ja que fa de FOREIGN KEY en altres taules. </p><figure id="a2c7bfd5-44f0-49cf-b3e4-c161e4c0d0e3" class="image"><a href="DOCUMENTACIO%CC%81%20DEL%20PROJECTE%2005b0b349049f487c972a1684d62e745e/Untitled.png"><img style="width:336px" src="DOCUMENTACIO%CC%81%20DEL%20PROJECTE%2005b0b349049f487c972a1684d62e745e/Untitled.png"/></a></figure><h3 id="829bdaa2-fe4f-4a9a-a2da-473b519d5a4c" class="">Insert de comunitats_autònomes</h3><p id="1a070fb1-c299-43ce-927d-40ff1c40cb1e" class="">Un cop fet l’INSERT a la primera taula hem seguit per les comunitats autònomes i les províncies.</p><p id="b5b312a2-7f0c-4a51-bbb2-cdfe99f36484" class="">Per tal de poder solucionar el problema de la comunitat autònoma “Total Nacional”, la qual porta el codi 99 i no mesclar algunes comunitats amb províncies que porten el mateix nom, hem fet servir el següent programa per poder introduïr les dades.</p><p id="bda802e1-66f3-4fb2-a000-1433b62f9c2b" class="">
+</p><pre id="1d298bb8-7cae-4358-8d83-b86f9c5e9a8a" class="code"><code>import mysql.connector
+
+# Connect to the database
+cnx = mysql.connector.connect(
+    host=&quot;10.94.255.163&quot;,
+    user=&quot;perepi&quot;,
+    password=&quot;pastanaga&quot;,
+    database=&quot;eleccions&quot;
+)
+cursor = cnx.cursor()
+
+# Open the file
+with open(&quot;07021911.DAT&quot;, &quot;r&quot;) as file:
+    # Read each line of the file
+    for line in file:
+        # Strip leading and trailing whitespace from the line
+        data = line.strip()
+        # Extract the values from the data string
+        nom = data[14:64].strip().replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        codi_ine_prov = data[11:13].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        codi_ine = data[9:11]
+
+        if codi_ine != &quot;99&quot; and codi_ine_prov == &quot;99&quot;:
+                query = &quot;INSERT INTO comunitats_autonomes (nom, codi_ine) VALUES (%s, %s)&quot;
+                values = (nom, codi_ine)
+                cursor.execute(query, values)
+        else:
+            pass
+# Commit the changes
+cnx.commit()
+
+# Close the cursor and connection
+cursor.close()
+cnx.close()</code></pre><p id="42bbad43-d826-46db-a0be-55c7e487e6e8" class="">
+</p><p id="bcd14a43-e8a6-4c4d-a7e2-09d6bce71da1" class="">Hem fet la part de les comunitats autònomes primer ja que necessitem la dada de comunitat_aut_id, la qual fa de FOREIGN KEY en la taula de províncies. Hem hagut de fer servir un SELECT dins d’un INSERT per poder comparar després els codi_ine i poder triar l’id que li pertany.</p><h3 id="c38b8b58-cd54-4531-aa1b-a89bfa56ce3e" class="">Insert Províncies</h3><pre id="5ad28623-2486-4e4c-b29f-772ac3fcf299" class="code"><code>import mysql.connector
+
+# Connect to the database
+cnx = mysql.connector.connect(
+#    host=&quot;192.168.56.103&quot;,
+    host=&quot;10.94.255.163&quot;,
+    user=&quot;perepi&quot;,
+    password=&quot;pastanaga&quot;,
+    database=&quot;eleccions&quot;
+)
+cursor = cnx.cursor()
+
+# Open the file
+with open(&quot;07021911.DAT&quot;, &quot;r&quot;) as file:
+    # Read each line of the file
+    for line in file:
+        # Strip leading and trailing whitespace from the line
+        data = line.strip()
+        # Extract the values from the data string
+        nom = data[14:64].replace(&quot; &quot;, &quot;&quot;)
+        codi_ine = data[11:13].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        num_escons = data[149:155].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        codi_ine_ca = data[9:11].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        IHATEDATSYKA=cursor.execute(f&quot;SELECT comunitat_aut_id FROM comunitats_autonomes WHERE codi_ine = &#x27;{line[9:11]}&#x27;&quot;)# Select
+        IHATEDATSYKA = cursor.fetchone()
+        if codi_ine_ca != &quot;99&quot; and codi_ine != &quot;99&quot;:
+            query = &quot;INSERT INTO provincies (comunitat_aut_id, nom, codi_ine, num_escons) VALUES (%s, %s, %s, %s)&quot;
+            values = (IHATEDATSYKA[0], nom, codi_ine, num_escons)
+            cursor.execute(query, values)
+        else:
+             pass
+        
+# Commit the changes
+cnx.commit()
+
+# Close the cursor and connection
+cursor.close()
+cnx.close()</code></pre><p id="1096b6e0-27f5-4bee-ab30-fe9a5c69b71f" class="">
+</p><h3 id="6c5ceede-bc0b-4163-b0a9-c69524a47793" class="">Insert Municipis</h3><pre id="65291583-748f-43bd-bca2-730ac259cacc" class="code"><code>import mysql.connector
+
+# Connect to the database
+cnx = mysql.connector.connect(
+#    host=&quot;192.168.56.103&quot;,
+    host=&quot;10.94.255.163&quot;,
+    user=&quot;perepi&quot;,
+    password=&quot;pastanaga&quot;,
+    database=&quot;eleccions&quot;
+)
+cursor = cnx.cursor()
+
+# Open the file
+with open(&quot;05021911.DAT&quot;, &quot;r&quot;) as file:
+    # Read each line of the file
+    for line in file:
+        # Strip leading and trailing whitespace from the line
+        data = line.strip()
+        # Extract the values from the data string
+        nom = data[18:118].replace(&quot; &quot;, &quot;&quot;)
+        codi_ine_mu = data[13:16].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        codi_ine_pr = data[11:13].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        districte = data[16:18].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        IHATEDATSYKA=cursor.execute(f&quot;SELECT provincia_id FROM provincies WHERE codi_ine = &#x27;{codi_ine_pr}&#x27;&quot;)# Select
+        IHATEDATSYKA = cursor.fetchone()
+        query = &quot;INSERT INTO municipis (nom, codi_ine, provincia_id, districte) VALUES (%s, %s, %s, %s)&quot;
+        values = (nom, codi_ine_mu, IHATEDATSYKA[0], districte)
+        cursor.execute(query, values)
+             
+
+# Commit the changes
+cnx.commit()
+
+# Close the cursor and connection
+cursor.close()
+cnx.close()</code></pre><p id="672a24fd-c60d-4fa3-bc76-e19952c2fa2c" class="">
+</p><h3 id="53cd8e57-d1cc-4ccc-88aa-7e852827387d" class="">Insert Eleccions_municipis</h3><pre id="bfffcc13-7e8c-4baa-bcc7-2f223e92eafb" class="code"><code></code></pre><p id="35ee5fab-ac04-4539-aef2-faf6a1632210" class="">
+</p><h3 id="c7ff02d0-93ca-473d-bb53-a3ae973cacb4" class="">Insert Candidatures</h3><pre id="94dc0dac-78ef-4efe-9ed8-a42cd0021217" class="code"><code>import mysql.connector
+
+# Connect to the database
+cnx = mysql.connector.connect(
+#    host=&quot;192.168.56.103&quot;,
+    host=&quot;10.94.255.163&quot;,
+    user=&quot;perepi&quot;,
+    password=&quot;pastanaga&quot;,
+    database=&quot;eleccions&quot;
+)
+cursor = cnx.cursor()
+
+# Open the file
+with open(&quot;03021911.DAT&quot;, &quot;r&quot;) as file:
+    # Read each line of the file
+    for line in file:
+        # Strip leading and trailing whitespace from the line
+        data = line.strip()
+        # Extract the values from the data string
+        eleccio_id = 1
+        codi_candidatura = data[8:14].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        nom_curt = data[14:64].strip().replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        nom_llarg = data[64:214].strip().replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        codi_acumulacio_provincia = data[214:220].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        codi_acumulacio_ca = data[220:226].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        codi_acumulario_nacional = data[226:232].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        query = &quot;INSERT INTO candidatures (eleccio_id, codi_candidatura, nom_curt, nom_llarg, codi_acumulacio_provincia, codi_acumulacio_ca, codi_acumulario_nacional) VALUES (%s, %s, %s, %s, %s, %s, %s)&quot;
+        values = (eleccio_id, codi_candidatura, nom_curt, nom_llarg, codi_acumulacio_provincia, codi_acumulacio_ca, codi_acumulario_nacional)
+        cursor.execute(query, values)
+
+# Commit the changes
+cnx.commit()
+
+# Close the cursor and connection
+cursor.close()
+cnx.close()</code></pre><p id="2e62b376-483a-40c8-bd66-b0f8dedcb2d7" class="">
+</p><h3 id="d5810cf6-2a7a-42fb-ab6a-89e1776eddef" class="">Insert Vots_candidatures_ca</h3><pre id="8f5ec201-4363-4b7f-970a-02fdac128fb7" class="code"><code></code></pre><p id="c14c32bb-be08-4c49-bf29-b9be8cd56bfa" class="">
+</p><h3 id="07362329-0e83-4ad1-b016-b25e38068a3a" class="">Insert Persones</h3><pre id="69ff246d-d55a-41ab-9103-e14a73800927" class="code"><code>import mysql.connector
+
+# Connect to the database
+cnx = mysql.connector.connect(
+#    host=&quot;192.168.56.103&quot;,
+    host=&quot;10.94.255.163&quot;,
+    user=&quot;perepi&quot;,
+    password=&quot;pastanaga&quot;,
+    database=&quot;eleccions&quot;
+)
+cursor = cnx.cursor()
+contador = 0
+# Open the file
+with open(&quot;04021911.DAT&quot;, &quot;r&quot;) as file:
+    # Read each line of the file
+    for line in file:
+        # Strip leading and trailing whitespace from the line
+        data = line.strip()
+        # Extract the values from the data string
+        persona_id = contador=contador+1
+        nom = data[25:50].strip().replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        cog1 = data[50:75].strip().replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        cog2 = data[75:100].strip().replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        sexe = data[100:101].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        DAY_naixement = data[101:103].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        MES_naixement = data[103:105].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        ANO_naixement = data[105:109].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        #Fer que data_naixement sigui un valor com a data
+        data_naixement = ANO_naixement + &quot;-&quot; + MES_naixement + &quot;-&quot; + DAY_naixement 
+        dni = data[109:119].replace(&quot;\&quot;&quot;, &quot;&#x27;&quot;)
+        query = &quot;INSERT INTO persones (persona_id, nom, cog1, cog2, sexe, data_naixement, dni) VALUES (%s, %s, %s, %s, %s, %s, %s)&quot;
+        values = (persona_id, nom, cog1, cog2, sexe, data_naixement, dni)
+        cursor.execute(query, values)
+
+# Commit the changes
+cnx.commit()
+
+# Close the cursor and connection
+cursor.close()
+cnx.close()</code></pre><p id="0a41d159-160e-470d-8f52-3b105595fe80" class="">
+</p><h3 id="f5637fe5-11bc-47e3-90b0-ed52f7ac1de5" class="">Insert Candidats(NF)</h3><pre id="b8db40cf-01ac-4da0-b8eb-9279d08d3d12" class="code"><code></code></pre><p id="13b9a733-ac98-4343-b03a-cca71f817a19" class="">
+</p><h1 id="a44ee5e6-3208-4dcc-951f-5250a6d09628" class="">APARTAT 2</h1><h2 id="83e60a0c-88f0-4934-862e-25afd4e81085" class="">CONSULTES SIMPLES</h2><ol type="1" id="05b07527-df02-41c7-91e0-a7e8275590d3" class="numbered-list" start="1"><li>Volem saber els noms dels municipis que començin per A:
+SELECT nom
+  FROM municipis
+ WHERE nom RLIKE &#x27;A&#x27;;</li></ol><p id="87eeaaa5-731f-4123-a0de-e529c7893e4e" class="">
+</p><ol type="1" id="1cb98463-2e51-423b-ac98-ad98d1307490" class="numbered-list" start="2"><li>Volem saber el total de persones que hi han amb sexe masculi:
+SELECT sexe, COUNT() AS total
+    FROM persones
+WHERE sexe=&#x27;M&#x27;
+GROUP BY sexe;<em>
+</em></li></ol><ol type="1" id="45796dea-4571-4ac7-8947-197cba825fe6" class="numbered-list" start="3"><li>Consulta per saber les eleccions que es varen fer abans del 2000:<em>
+</em>SELECT any 
+  FROM eleccions
+WHERE any&gt;2000;<em>
+</em></li></ol><ol type="1" id="34f149d9-36e3-445b-a162-16c4c88f7d75" class="numbered-list" start="4"><li>Volem saber la suma de vots totals i agrupar-ho per provincia id:<em>
+</em>SELECT provincia_id, SUM(vots) as vots_totals
+    FROM vots_candidatures_prov
+GROUP BY provincia_id;<em>
+</em></li></ol><ol type="1" id="d6db94ad-e6f7-43b3-afc6-8cc2b81f7138" class="numbered-list" start="5"><li>Consultar el id i el nom de la comunitat autonoma de Andalucia:
+SELECT comunitat_aut_id,nom 
+  FROM comunitats_autonomes
+WHERE nom=&#x27;Andalucia&#x27;;</li></ol><h3 id="9c9bf206-f659-4d15-bf09-ac7eea840f98" class="">CONSULTES INNER JOIN</h3><ol type="1" id="e586fe64-8364-4a51-8e6d-1a59859c1c2d" class="numbered-list" start="1"><li>/* contar el numero de votos por provincia */
+SELECT pro.nom AS provincia, vot.vots AS num_vots </li></ol><p id="e6a4a0a8-4a86-43a2-aa6a-8a9719198f38" class="">         FROM provincies pro </p><p id="f1fb6fea-7736-44dc-b00b-2a48bfe99578" class="">         INNER JOIN vots_candidatures_prov vot ON pro.provincia_id = vot.provincia_id </p><p id="7dbbf5e9-2766-4469-bd92-788e1055d187" class="">
+</p><p id="79ac6f24-93f0-46eb-a2cf-57406e817869" class="">2. */ nombres de los candidatos de cada candidatura */
+      SELECT can.nom_curt,per.nom AS nom_candidat </p><p id="a7e7305e-1217-4274-9d93-fa134d98717c" class="">           FROM candidatures can
+           INNER JOIN candidats can1 ON can.candidatura_id = can1.candidatura_id
+           INNER JOIN persones per ON can1.persona_id = per.persona_id
+</p><ol type="1" id="b726dd0e-a2e5-4219-80c9-9e0b1c9dc1fb" class="numbered-list" start="3"><li>Quins municipis hi ha per cada provincia:
+SELECT p.nom AS nom_provincia, m.nom AS nom_municipi
+     FROM provincies p
+     INNER JOIN municipis m ON m.provincia_id = p.provincia_id;</li></ol><p id="8d93b403-0457-4806-aef3-894200a56d6f" class="">
+</p><ol type="1" id="d3688af5-4673-4381-b639-08f429901e8c" class="numbered-list" start="4"><li>Saber els vots valids i l’any de cada elecció</li></ol><p id="8d3b68f5-b464-4e1e-90f1-b359c730db79" class="">      SELECT e.eleccio_id,e.any,m.vots_valids
+           FROM eleccions e
+      LEFT JOIN eleccions_municipis m ON e.eleccio_id = m.eleccio_id</p><p id="946f439b-2f55-4a07-8959-9ce5f511e011" class="">      WHERE vots_valids IS NULL;</p><p id="24e01cfb-38bc-48e9-a6c6-da367ba6671b" class="">
+</p><ol type="1" id="f9a429c0-d5bd-4073-b92f-d05b763328af" class="numbered-list" start="5"><li>Quin es el id del primer candidat dels candidats obtinguts per provincia 
+SELECT c.candidat_id,p.candidats_obtinguts
+FROM vots_candidatures_prov p
+RIGHT JOIN candidats c ON p.candidatura_id = c.candidatura_id
+LIMIT 1;</li></ol><p id="4e9556e6-4039-41b0-9fa3-a36549dc2d78" class="">
+</p><h2 id="bf25ad86-855f-4b66-8cb1-63cbca73b34b" class="">SUBCONSULTES</h2><ol type="1" id="e4478979-4a61-4c4d-b974-5c6bfbcc9705" class="numbered-list" start="1"><li>Obté la eleccio_id, el municipi_id i el num de vots vàlids de les eleccions municipals amb més vots en blanc<p id="e79c08f5-b9bf-44cb-ab1a-29a7bade0485" class="">SELECT eleccio_id, municipi_id, vots_valids
+FROM eleccions_municipis
+WHERE vots_blanc = (SELECT MAX(vots_blanc)
+FROM eleccions_municipis);</p><p id="1a4877bb-675a-4447-96a0-adb8aea22088" class="">
+</p></li></ol><ol type="1" id="e2a32561-d8a5-440e-8ebc-4c0868acadea" class="numbered-list" start="2"><li>Visualitzar l&#x27;id de candidat i el nom del canditat més jove<p id="00d7c6a1-c82a-484b-9b83-6359838ef318" class="">SELECT c.candidat_id, p.nom
+FROM candidats c
+INNER JOIN persones p ON p.persona_id
+WHERE p.data_naixement=(SELECT MAX(data_naixement)
+FROM persones
+GROUP BY data_naixement);</p><p id="99bc3df1-4ea9-4103-9d29-aaed2dd3fca4" class="">
+</p></li></ol><ol type="1" id="f8951659-1f19-4a67-9370-a798620ce620" class="numbered-list" start="3"><li>Volem saber el número de vots de la canditatura(comunitat autonoma) amb el candidat més vell<p id="953eade4-f680-4acc-9819-b8835175d401" class="">SELECT v.vots
+FROM vots_candidatures_ca v
+INNER JOIN candidats c ON c.candidatura_id=v.candidatura_id
+INNER JOIN persones p ON c.persona_id=p.persona_id
+WHERE p.data_naixement=(SELECT MIN(data_naixement)
+FROM persones);</p><p id="791903c8-8347-4e74-b5d4-ab7afa86b23d" class="">
+</p></li></ol><ol type="1" id="db8cdf2b-7eec-48d3-a37f-8f01cc0bc7ca" class="numbered-list" start="4"><li>Volem saber els candidats que són més joves que el que marca la mitja d&#x27;edat<p id="04e54194-2f17-4554-8234-d99996dac277" class="">SELECT *
+FROM persones
+WHERE data_naixement&gt;(SELECT AVG(data_naixement)
+FROM persones);</p><p id="cf5f7e3b-0fce-433d-b84b-4be6200ede60" class="">
+</p></li></ol><ol type="1" id="9751b014-e188-40bf-a031-33e9d329c18f" class="numbered-list" start="5"><li>Obté el nom del municipi, el seu id, el numero de vots a candidatures i el total de vots emeoss del municipi que hagi tingut més vots nuls<p id="51d2c3d0-41fa-4035-9c7d-eeefe4edf431" class="">
+SELECT m.nom, e.municipi_id, e.vots_candidatures, e.vots_emesos
+FROM eleccions_municipis e
+INNER JOIN municipis m ON e.municipi_id=m.municipi_id
+WHERE vots_nuls=(SELECT MAX(vots_nuls)
+FROM eleccions_municipis);</p></li></ol><h1 id="7f26d3a8-e7a1-4ed6-ab6e-a0237d2e04d6" class=""></h1><h1 id="2d41bfb6-b225-48d4-808f-8ac5d5e23cc3" class=""></h1></div></article></body></html>
