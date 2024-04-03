@@ -4,6 +4,23 @@ no markdown:
 
 ---
 
+cosas que hay que hacer:
+
+1. crear el modelo ER y crear el model relacional
+2. esquema de seguridad:
+
+
+
+
+
+
+
+
+
+
+
+
+
 puntos a tomar en cuenta:
 
 - script de login
@@ -19,5 +36,5 @@ puntos a tomar en cuenta:
 instalacion de la libreria de encriptacion
 
 ```
-`pip install bcrypt
+pip install bcrypt
 ```
