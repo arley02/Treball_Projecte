@@ -2,7 +2,7 @@
 
 no markdown:
 
----------------------------------
+---
 
 puntos a tomar en cuenta:
 
@@ -14,4 +14,10 @@ puntos a tomar en cuenta:
 - markdown
   - documentar todo lo hecho sin exceso de imagenes
 
----------------------------------
+---
+
+instalacion de la libreria de encriptacion
+
+```
+`pip install bcrypt
+```
