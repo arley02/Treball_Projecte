@@ -27,22 +27,32 @@ CREATE TABLE PERSONAL (
     especialidad VARCHAR(50)
 );
 
--- Создание таблицы MEDICO
-CREATE TABLE MEDICO (
-    id_personal INT PRIMARY KEY,
-    estudios VARCHAR(100),
-    curriculums VARCHAR(100),
-    FOREIGN KEY (id_personal) REFERENCES PERSONAL(id_personal)
-);
-
 -- Создание таблицы ENFERMERIA
-CREATE TABLE ENFERMERIA (
+CREATE TABLE ENFERMERA (
     id_personal INT PRIMARY KEY,
     años_de_experiencia INT,
     numero_planta INT,
     FOREIGN KEY (id_personal) REFERENCES PERSONAL(id_personal),
     FOREIGN KEY (numero_planta) REFERENCES PLANTA(numero_planta)
 );
+
+-- Создание таблицы MEDICO
+CREATE TABLE MEDICO (
+    id_personal INT PRIMARY KEY,
+    estudios VARCHAR(100),
+    curriculums VARCHAR(100),
+	id_enfermera INT,
+    FOREIGN KEY (id_personal) REFERENCES PERSONAL(id_personal),
+	FOREIGN KEY (id_enfermera) REFERENCES ENFERMERA(id_personal)
+);
+
+-- tabla VARIO
+CREATE TABLE VARIO (
+    id_personal INT PRIMARY KEY,
+    tipo_de_trabajo VARCHAR(100),
+    FOREIGN KEY (id_personal) REFERENCES PERSONAL(id_personal)
+);
+
 
 -- Создание таблицы QUIROFANO
 CREATE TABLE QUIROFANO (
