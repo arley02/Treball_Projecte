@@ -83,16 +83,6 @@ CREATE TABLE HABITACION (
     FOREIGN KEY (numero_planta) REFERENCES PLANTA(numero_planta)
 );
 
--- Создание таблицы PACIENTE
-CREATE TABLE PACIENTE (
-    dni_paciente VARCHAR(20) PRIMARY KEY,
-    nombre VARCHAR(50),
-    apellidos VARCHAR(50),
-    medicamentos_recibidos VARCHAR(500),
-    id_medico INT,
-    FOREIGN KEY (id_medico) REFERENCES MEDICO(id_personal)
-);
-
 -- Создание таблицы HISTORIAL_MEDICO
 CREATE TABLE HISTORIAL_MEDICO (
     id_historial SERIAL PRIMARY KEY,
@@ -103,6 +93,18 @@ CREATE TABLE HISTORIAL_MEDICO (
     historial_de_alergias VARCHAR(500),
     FOREIGN KEY (dni_paciente) REFERENCES PACIENTE(dni_paciente),
     FOREIGN KEY (id_personal) REFERENCES PERSONAL(id_personal)
+);
+
+-- Создание таблицы PACIENTE
+CREATE TABLE PACIENTE (
+    dni_paciente VARCHAR(20) PRIMARY KEY,
+    nombre VARCHAR(50),
+    apellidos VARCHAR(50),
+    medicamentos_recibidos VARCHAR(500),
+    id_medico INT,
+	id_historial INT,
+    FOREIGN KEY (id_medico) REFERENCES MEDICO(id_personal),
+	FOREIGN KEY (id_historial) REFERENCES HISTORIAL_MEDICO(id_historial)
 );
 
 -- Создание таблицы DIAGNOSTICO
