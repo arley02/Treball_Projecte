@@ -94,8 +94,8 @@ CREATE TABLE ENFERMERA (
 
 CREATE TABLE RES_VIS (
     id_visita SERIAL PRIMARY KEY,
-    id_personal INT UNIQUE NOT NULL,
-    dni_paciente VARCHAR(20) UNIQUE NOT NULL,
+    id_personal INT NOT NULL,
+    dni_paciente VARCHAR(20) NOT NULL,
     FOREIGN KEY (id_personal) REFERENCES PERSONAL(id_personal),
     FOREIGN KEY (dni_paciente) REFERENCES PACIENTE(dni_paciente)
 );
