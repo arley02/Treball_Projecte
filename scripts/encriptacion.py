@@ -1,39 +1,35 @@
 import bcrypt
-import openpyxl
+import csv
 from os import system
+from cryptography.fernet import Fernet
+import base64
 
 # Funció per crear una contrasenya xifrada
-def create_hash(password):
-    salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
-    return hashed_password
+def encriptar(password):
+    # Generar una clave de encriptación
+    clave = b'TuClaveFijaAqui'
+    texto_encriptado = base64.b64encode(clave)
+    return texto_encriptado
 
-# Funció per comprovar la contrasenya
-def check_password(input_password, hashed_password):
-    return bcrypt.checkpw(input_password.encode('utf-8'), hashed_password)
-
-# Carrega de noms d'usuari i contrasenyes xifrades des d'un fitxer Excel
-def load_credentials(file_path):
-    wb = openpyxl.load_workbook(file_path)
-    ws = wb.active
-    credentials = {}
-    for row in ws.iter_rows(min_row=2, values_only=True):
-        username = row[0]
-        hashed_password = row[1].encode('utf-8')  # Convertir la contraseña a bytes
-        credentials[username] = hashed_password
-    return credentials
+# Carrega de noms d'usuari i contrasenyes d'un fitxer Excel
+def cargar_credenciales(file_path):
+    credenciales = {}
+    with open(file_path, 'r') as File:
+        reader = csv.reader(File, delimiter=',')    
+        for fila in reader:
+            nombre_usuario, contraseña = fila
+            credenciales[nombre_usuario] = contraseña
+    return credenciales
 
 # Afegir un nou compte
 def datos_encript(file_path, username, password):
-    wb = openpyxl.load_workbook(file_path)
-    ws = wb.active
-    ws.append((username, create_hash(password)))
-    wb.save(file_path)
-
-# Accedir al sistema
+    datos = [username, encriptar(password)]
+    with open(file_path, 'a',newline='') as archivo_csv:
+        writer = csv.writer(archivo_csv)
+        writer.writerow(datos)
+# Accedir al sistemax
 
 # Ruta al fitxer Excel amb noms d'usuari i contrasenyes
-file_path = "PROG/credentials.xlsx"
+#-----------------------------------cal crear el fitxer credentials.xlsx i modificar la ruta----------------------------
+file_path = "PROG/credenciales.csv"
 
-# Carregar noms d'usuari i contrasenyes xifrades
-credentials = load_credentials(file_path)
