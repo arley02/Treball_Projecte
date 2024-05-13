@@ -6,7 +6,7 @@ para la creacion de la base de datos de la empresa se empleo la siguiente senten
 
 
 ```
-![previsualizacion_sql](ER-Relacional-SQL/SQL.png){width=width height=height}
+![previsualizacion_sql](https://github.com/arley02/Treball_Projecte/blob/main/ER-Relacional-SQL/SQL.png){width=width height=height}
 ```
 
 `<> ER-Relacional-SQL/ZONA_PRUEBAS/SQLhospital_new_and_constrains.sql`
