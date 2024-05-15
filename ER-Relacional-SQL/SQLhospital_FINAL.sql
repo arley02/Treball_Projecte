@@ -60,7 +60,7 @@ CREATE TABLE QUIROFANO (
 
 CREATE TABLE PERSONAL (
     id_personal SERIAL PRIMARY KEY,
-    nombre VARCHAR(20) UNIQUE NOT NULL,
+    nombre VARCHAR(20) NOT NULL,
     apellidos VARCHAR(30) NOT NULL,
     dni VARCHAR(30) NOT NULL
 );
@@ -69,8 +69,8 @@ CREATE TABLE MEDICO (
     id_medico SERIAL PRIMARY KEY,
     id_personal INT UNIQUE NOT NULL,
     estudios VARCHAR(50) NOT NULL,
-    especialidad VARCHAR(70),
-    curriculum VARCHAR(70),
+    especialidad VARCHAR(700),
+    curriculum VARCHAR(700),
     FOREIGN KEY (id_personal) REFERENCES PERSONAL(id_personal)
 );
 
