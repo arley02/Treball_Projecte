@@ -1,1 +1,2 @@
-El fitxer que s'ha d'executar és el main_login, en cas que falli en script si us plau comproveu que el fitxer xlsx existeixi i que la ruta coincideixi amb la dels scripts (encriptacion.py). També comproveu que a la IP, base de dades, usuari i contrasenya s'adaptin al vostre servidor de base de dades.
+El fitxer que s'ha d'executar és el main_login, en cas que falli en script si us plau comproveu que el fitxer xlsx existeixi i que la ruta coincideixi amb la dels scripts (encriptacion.py). 
+També comproveu que a la IP (fichero conexion en el campo host), base de dades, usuari i contrasenya s'adaptin al vostre servidor de base de dades.
