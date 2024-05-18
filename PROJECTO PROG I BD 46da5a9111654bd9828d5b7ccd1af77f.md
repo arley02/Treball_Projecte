@@ -221,10 +221,10 @@ ADD CONSTRAINT fk_id_quirofano_quirofano FOREIGN KEY (id_quirofano) REFERENCES Q
 # INSTALACION Y CONFIGURACION SSL
 
 - para la instalacion del ssl es necesario hacer las siguientes comprobaciones:
-    - PostgreSQL instalado
-    - Comprobar conexión a internet  a la base de datos
-    - Actualizar repositorios (apt update + apt upgrade)
-    - comprobar si el ssl esta instalado lo cual en las versiones actuales de postgres ya viene con un ssl por defecto solo falta configurarlo.
+  - PostgreSQL instalado
+  - Comprobar conexión a internet  a la base de datos
+  - Actualizar repositorios (apt update + apt upgrade)
+  - comprobar si el ssl esta instalado lo cual en las versiones actuales de postgres ya viene con un ssl por defecto solo falta configurarlo.
 
 1. Configuración de PostgreSQL para SSL
 
@@ -270,6 +270,9 @@ cp server.crt root.crt
 Una vez generados los cambios anteriores, procedemos a configurar para que se use el certificado y la clave generada en la ruta de configuración de PostgreSQL, en mi caso la ruta es /etc/postgresql/15/main/postgresql.conf y buscamos el apartado -SSL- como se llega a apreciar
 
 ![Untitled](PROJECTO%20PROG%20I%20BD%2046da5a9111654bd9828d5b7ccd1af77f/Untitled%204.png)
+
+IMPORTANTE:
+Dentro del fichero buscamos el apartado - SSL – y verificamos si el ssl es donde, donde pone ssl_ca_file ponemos la ruta del fichero root.crt, en el ssl_cert_file ponemos la ruta del fichero server.crt y por último ponemos a ssl_key_file la ruta del fichero server.key, luego descomentamos el ssl_ciphers, ssl_prefer_server_ciphers y guardamos.
 
 ESQUEMA DE ALTA DISPONIBILIDAD (documento ya hecho añadirlo y cambiar la explicacion de instalacion)
 
