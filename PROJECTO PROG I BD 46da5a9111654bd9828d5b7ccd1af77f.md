@@ -298,7 +298,7 @@ COMPROVACIONES
 
 ![1716065583014](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716065583014.png)
 
-## DOCUMENTO AGPD
+### Documento AGPD
 
 **Documento de Seguridad de Datos - Hospital Blanes**
 
@@ -358,7 +358,40 @@ su relevancia y eficacia en la protección de los datos del Hospital Blanes. Se
 realizarán actualizaciones según sea necesario para reflejar cambios en los
 riesgos de seguridad y en las medidas de seguridad disponibles.
 
-ESQUEMA DE ALTA DISPONIBILIDAD (documento ya hecho añadirlo y cambiar la explicacion de instalacion)
+## Esquema de alta disponibilidad
+
+**Servidor principal:**
+
+    HPE ProLiant DL380 Gen10.
+
+    Especificaciones – CPU Intel Xeon escalable 4210 con 10 núcleos a 2.2 HZ
+
+    Memoria RAM: 64GB DDR4 (4modulos de 16 GB)
+
+    almacenamiento: 100 TB en configuración RAID 10 (ampliable)
+
+
+**Portátil:**
+
+    Marca: HP
+
+    Sistema operativo: Debian 12 sin interfaz grafica
+
+**JUSTIFICACIÓN:**
+
+La elección del servidor HPE ProLiant DL380 Gen 10 se basa en su velocidad y  fiabilidad. Este servidor ofrece un rendimiento superior, integrando características avanzadas de gestión y seguridad. La memoria RAM de 64 GB permite el manejo eficiente de grandes conjuntos de datos y facilita la ejecución fluida de aplicaciones exigentes. Además, el almacenamiento RAID 10 de 100 TB proporciona una sólida protección de datos y garantiza una alta disponibilidad del sistema, minimizando el tiempo de inactividad.
+
+
+
+**Servidor respaldo:**
+
+    Servidor en la nube (aws)Amazon Elástic compute cloud (Amazon EC2)
+
+    CPU contratado 8 núcleos CPU
+
+    4 memoria RAM 64GB
+
+    Almacenamiento 100 TB.
 
 1. DUMMY DATA
 2. BLOQUE DE EXPORTACION
