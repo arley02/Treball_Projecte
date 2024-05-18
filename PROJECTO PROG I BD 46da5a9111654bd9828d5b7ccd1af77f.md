@@ -6,7 +6,7 @@
 
 ## Modelo relacional (texto)
 
-[Model relacional.pdf](PROJECTO%20PROG%20I%20BD%2046da5a9111654bd9828d5b7ccd1af77f/Model_relacional.pdf)
+[Model relacional.pdf](imagenes/Model_relacional.pdf)
 
 ## Modelo entidad relación (imagen)
 
