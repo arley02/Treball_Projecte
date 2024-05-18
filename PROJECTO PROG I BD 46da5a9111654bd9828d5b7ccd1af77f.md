@@ -1,20 +1,20 @@
 # PROJECTO PROG I BD
 
-# INDEX
+## INDEX
 
----
+## **Diseño ER - Modelo Relacional**
 
-## Modelo relacional (texto)
+### Modelo relacional (texto)
 
 [Model relacional.pdf](imagenes/Model_relacional.pdf)
 
-## Modelo entidad relación (imagen)
+### Modelo entidad relación (imagen)
 
 presentación de la base de datos en modelo entidad relación:
 
 ![Untitled](imagenes/Untitled.png)
 
-## SQL
+### SQL
 
 para la creación de la base de datos de la empresa se empleo la siguiente sentencia SQL:
 
@@ -218,13 +218,16 @@ ADD CONSTRAINT fk_id_quirofano_quirofano FOREIGN KEY (id_quirofano) REFERENCES Q
 
 ```
 
-# INSTALACION Y CONFIGURACION SSL
+## Esquema de seguridad
+
+### Instalacion y configuración ssl
 
 - para la instalacion del ssl es necesario hacer las siguientes comprobaciones:
-  - PostgreSQL instalado
-  - Comprobar conexión a internet  a la base de datos
-  - Actualizar repositorios (apt update + apt upgrade)
-  - comprobar si el ssl esta instalado lo cual en las versiones actuales de postgres ya viene con un ssl por defecto solo falta configurarlo.
+
+- PostgreSQL instalado
+- Comprobar conexión a internet  a la base de datos
+- Actualizar repositorios (apt update + apt upgrade)
+- comprobar si el ssl esta instalado lo cual en las versiones actuales de postgres ya viene con un ssl por defecto solo falta configurarlo.
 
 1. Configuración de PostgreSQL para SSL
 
@@ -271,9 +274,96 @@ Una vez generados los cambios anteriores, procedemos a configurar para que se us
 
 ![Untitled](imagenes/Untitled%204.png)
 
-IMPORTANTE: 
+IMPORTANTE:
 
 Dentro del fichero buscamos el apartado - SSL – y verificamos si el ssl es donde, donde pone ssl_ca_file ponemos la ruta del fichero root.crt, en el ssl_cert_file ponemos la ruta del fichero server.crt y por último ponemos a ssl_key_file la ruta del fichero server.key, luego descomentamos el ssl_ciphers, ssl_prefer_server_ciphers y guardamos.
+
+Ahora configuramos el fichero pg_hba.conf y añadimos al final del fichero la siguiente línea:
+
+![1716065260567](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716065260567.png)
+
+Una vez modificado y guardado reiniciamos el servicio de postgres.
+Sudo systemctl restart postgresql o sudo service postgresql restart
+
+---
+
+COMPROVACIONES
+
+**SSL ON:**
+
+![1716065440042](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716065440042.png)
+
+**SSL OFF:**
+
+![1716065478474](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716065478474.png)
+
+**SSL CON RUTA ERRONEA: se recomienda usar la ruta absoluta para indicar la ubicacion de la clave.**
+
+![1716065583014](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716065583014.png)
+
+## DOCUMENTO AGPD
+
+**Documento de Seguridad de Datos - Hospital Blanes**
+
+El presente documento establece las medidas de seguridad implementadas
+por el Hospital Blanes para proteger los datos personales y confidenciales de
+los pacientes, así como los datos del personal del hospital. Este documento se
+elabora en cumplimiento de la normativa de protección de datos de la Agencia
+Española de Protección de Datos (AGPD) y tiene como objetivo garantizar la
+confidencialidad, integridad y disponibilidad de la información médica y
+personal.
+
+
+**El Hospital Blanes maneja diversos tipos de datos, entre los que se
+incluyen:**
+
+* Datos personales de los pacientes: nombres, números de seguro social,
+  direcciones, números de teléfono, entre otros.
+* Datos personales del personal del hospital: nombres, números de
+  identificación, información de contacto, entre otros.
+* Historiales médicos y diagnósticos de los pacientes entre otros.
+
+Se ha realizado un análisis de riesgos para identificar las posibles
+amenazas y vulnerabilidades que podrían afectar la seguridad de los datos en el
+Hospital [Nombre del Hospital]. Algunas de las amenazas identificadas incluyen:
+
+* Acceso no autorizado a los registros médicos de los pacientes.
+* Divulgación no autorizada de información personal y médica del personal del hospital.
+* Riesgo de pérdida de datos debido a fallos en sistemas de almacenamiento
+  o copias de seguridad.
+* Riesgo de violación de la privacidad de los pacientes debido a la
+  revelación no autorizada de historiales médicos y diagnósticos.
+
+
+**Medidas de Seguridad Implementadas**
+
+Para proteger los datos mencionados, el Hospital Blanes ha implementado
+las siguientes medidas de seguridad:
+
+- Acceso restringido a los sistemas de gestión de datos, utilizando
+  autenticación de dos factores y controles de acceso basados en roles.
+- Cifrado de datos sensibles, como historiales médicos y diagnósticos,
+  tanto en almacenamiento como en transmisión.
+- Implementación de políticas de privacidad y seguridad de la información,
+  con capacitación regular del personal en prácticas de seguridad.
+- Auditorías periódicas de seguridad internas y externas para evaluar la
+  eficacia de las medidas de seguridad implementadas.
+- Realización de copias de seguridad regulares de los datos, con
+  almacenamiento seguro fuera del sitio.
+
+
+Las medidas de seguridad implementadas están diseñadas para proteger la
+confidencialidad, integridad y disponibilidad de los datos personales y médicos
+en el Hospital Blanes. Estas medidas se justifican en función de cumplir con
+los requisitos legales y normativos de protección de datos, así como para
+garantizar la confianza y privacidad de los pacientes y el personal del
+hospital.
+
+Este documento de seguridad será revisado periódicamente para garantizar
+su relevancia y eficacia en la protección de los datos del Hospital Blanes. Se
+realizarán actualizaciones según sea necesario para reflejar cambios en los
+riesgos de seguridad y en las medidas de seguridad disponibles.
+
 
 ESQUEMA DE ALTA DISPONIBILIDAD (documento ya hecho añadirlo y cambiar la explicacion de instalacion)
 
