@@ -12,7 +12,7 @@
 
 presentación de la base de datos en modelo entidad relación:
 
-![Untitled](PROJECTO%20PROG%20I%20BD%2046da5a9111654bd9828d5b7ccd1af77f/Untitled.png)
+![Untitled](imagenes/Untitled.png)
 
 ## SQL
 
@@ -232,7 +232,7 @@ Primero generaremos un certificado SSL con una herramienta llamada openssl:
 
 Vamos a la ruta donde se encuentra el archivo de configuración de PostgreSQL, una vez dentro podemos crear una carpeta y dentro de ella crear los certificados. En mi caso, no la creé sino que los hice en el directorio principal donde está el archivo de configuración.
 
-![Untitled](PROJECTO%20PROG%20I%20BD%2046da5a9111654bd9828d5b7ccd1af77f/Untitled%201.png)
+![Untitled](imagenes/Untitled%201.png)
 
 Para generar la clave privada ejecutamos los comandos en la ruta mencionada anteriormente:
 
@@ -248,11 +248,11 @@ esto especifica el nombre del fichero de entrada para leer una clave, una vez he
 openssl rsa -in server.key -out server.key
 ```
 
-![Untitled](PROJECTO%20PROG%20I%20BD%2046da5a9111654bd9828d5b7ccd1af77f/Untitled%202.png)
+![Untitled](imagenes/Untitled%202.png)
 
 Una vez hecho podemos proceder a cambiar los permisos del fichero y el propietario como  se muestra en la imagen.
 
-![Untitled](PROJECTO%20PROG%20I%20BD%2046da5a9111654bd9828d5b7ccd1af77f/Untitled%203.png)
+![Untitled](imagenes/Untitled%203.png)
 
 - Chmod 400 server.key : con este comando cambiamos los permisos porque el propietario del archivo tiene permisos de lectura.
 - chown postgres:postgres server.key : cambia el propietario y el grupo al usuario postgres.
@@ -269,7 +269,7 @@ cp server.crt root.crt
 
 Una vez generados los cambios anteriores, procedemos a configurar para que se use el certificado y la clave generada en la ruta de configuración de PostgreSQL, en mi caso la ruta es /etc/postgresql/15/main/postgresql.conf y buscamos el apartado -SSL- como se llega a apreciar
 
-![Untitled](PROJECTO%20PROG%20I%20BD%2046da5a9111654bd9828d5b7ccd1af77f/Untitled%204.png)
+![Untitled](imagenes/Untitled%204.png)
 
 ESQUEMA DE ALTA DISPONIBILIDAD (documento ya hecho añadirlo y cambiar la explicacion de instalacion)
 
