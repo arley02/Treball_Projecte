@@ -1,7 +1,5 @@
 # PROJECTO PROG I BD
 
-## INDEX
-
 ## **Diseño ER - Modelo Relacional**
 
 ### Modelo relacional (texto)
@@ -223,7 +221,6 @@ ADD CONSTRAINT fk_id_quirofano_quirofano FOREIGN KEY (id_quirofano) REFERENCES Q
 ### Instalacion y configuración ssl
 
 - para la instalacion del ssl es necesario hacer las siguientes comprobaciones:
-
 - PostgreSQL instalado
 - Comprobar conexión a internet  a la base de datos
 - Actualizar repositorios (apt update + apt upgrade)
@@ -313,7 +310,6 @@ Española de Protección de Datos (AGPD) y tiene como objetivo garantizar la
 confidencialidad, integridad y disponibilidad de la información médica y
 personal.
 
-
 **El Hospital Blanes maneja diversos tipos de datos, entre los que se
 incluyen:**
 
@@ -334,7 +330,6 @@ Hospital [Nombre del Hospital]. Algunas de las amenazas identificadas incluyen:
 * Riesgo de violación de la privacidad de los pacientes debido a la
   revelación no autorizada de historiales médicos y diagnósticos.
 
-
 **Medidas de Seguridad Implementadas**
 
 Para proteger los datos mencionados, el Hospital Blanes ha implementado
@@ -351,7 +346,6 @@ las siguientes medidas de seguridad:
 - Realización de copias de seguridad regulares de los datos, con
   almacenamiento seguro fuera del sitio.
 
-
 Las medidas de seguridad implementadas están diseñadas para proteger la
 confidencialidad, integridad y disponibilidad de los datos personales y médicos
 en el Hospital Blanes. Estas medidas se justifican en función de cumplir con
@@ -363,7 +357,6 @@ Este documento de seguridad será revisado periódicamente para garantizar
 su relevancia y eficacia en la protección de los datos del Hospital Blanes. Se
 realizarán actualizaciones según sea necesario para reflejar cambios en los
 riesgos de seguridad y en las medidas de seguridad disponibles.
-
 
 ESQUEMA DE ALTA DISPONIBILIDAD (documento ya hecho añadirlo y cambiar la explicacion de instalacion)
 
