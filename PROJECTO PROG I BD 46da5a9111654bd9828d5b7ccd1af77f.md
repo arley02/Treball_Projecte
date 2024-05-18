@@ -271,7 +271,8 @@ Una vez generados los cambios anteriores, procedemos a configurar para que se us
 
 ![Untitled](imagenes/Untitled%204.png)
 
-IMPORTANTE:
+IMPORTANTE: 
+
 Dentro del fichero buscamos el apartado - SSL – y verificamos si el ssl es donde, donde pone ssl_ca_file ponemos la ruta del fichero root.crt, en el ssl_cert_file ponemos la ruta del fichero server.crt y por último ponemos a ssl_key_file la ruta del fichero server.key, luego descomentamos el ssl_ciphers, ssl_prefer_server_ciphers y guardamos.
 
 ESQUEMA DE ALTA DISPONIBILIDAD (documento ya hecho añadirlo y cambiar la explicacion de instalacion)
