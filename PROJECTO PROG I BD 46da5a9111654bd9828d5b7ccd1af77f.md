@@ -517,7 +517,7 @@ COMPROVACION REPLICA:
 podemos apreciar en la siguiente imagen en la parte izquierda se encuentra el
 nodo principal y la parte derecha es el nodo secundario.
 
-![1716151142489](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/FX87/OneDrive/Documentos/GitHub/pagina/image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151142489.png)
+![1716152240041](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716152240041.png)
 
 Para demostrar que la replica que hace de manera efectiva creare una tabla con un
 insert pequeño.
@@ -543,7 +543,8 @@ Para poder acceder al fichero donde se crearán las tareas:
 
 Crontab -e
 
-**Creación y configuración del script de backup:![1716151498252](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151498252.png)**
+
+**Creación y configuración del script de backup:**
 
 En le apartado **variables **se
 configuraron datos necesarios para que el script pueda acceder a la base de
