@@ -370,7 +370,6 @@ riesgos de seguridad y en las medidas de seguridad disponibles.
 
     almacenamiento: 100 TB en configuración RAID 10 (ampliable)
 
-
 **Portátil:**
 
     Marca: HP
@@ -380,8 +379,6 @@ riesgos de seguridad y en las medidas de seguridad disponibles.
 **JUSTIFICACIÓN:**
 
 La elección del servidor HPE ProLiant DL380 Gen 10 se basa en su velocidad y  fiabilidad. Este servidor ofrece un rendimiento superior, integrando características avanzadas de gestión y seguridad. La memoria RAM de 64 GB permite el manejo eficiente de grandes conjuntos de datos y facilita la ejecución fluida de aplicaciones exigentes. Además, el almacenamiento RAID 10 de 100 TB proporciona una sólida protección de datos y garantiza una alta disponibilidad del sistema, minimizando el tiempo de inactividad.
-
-
 
 **Servidor respaldo:**
 
@@ -393,7 +390,265 @@ La elección del servidor HPE ProLiant DL380 Gen 10 se basa en su velocidad y  f
 
     Almacenamiento 100 TB.
 
-1. DUMMY DATA
-2. BLOQUE DE EXPORTACION
+**Justificación:**
 
-# MANUAL USUARIO
+Se ha elegido esta configuración debido a su alta escalabilidad y disponibilidad, lo que garantiza que el servidor de respaldo pueda crecer según las necesidades del hospital y esté siempre disponible cuando se necesite. Además, AWS ofrece una garantía de disponibilidad del 99,99%, lo que proporciona una capa adicional de confiabilidad y seguridad para los datos del hospital.
+
+**Sistema de redundancia y replicación
+Configuración (activo-pasivo) mecanismo asíncrono.**
+
+Se ha establecido una configuración activo-pasivo, donde el servidor físico actúa como servidor principal y el servidor en la nube funciona como servidor secundario. La replicación de datos se realiza de manera asíncrona, lo que significa que la sincronización entre los servidores ocurre eventualmente, por eventos.
+
+**Justificación:**
+
+Esta configuración ofrece una combinación de
+alta disponibilidad, tolerancia a fallos y capacidad de respuesta del sistema, lo que la hace ideal para respaldar las necesidades críticas de datos del hospital. Aunque tiene sus contras, como costos adicionales y complejidad de configuración, pero los beneficios en términos de seguridad y continuidad del servicio superan ampliamente estas consideraciones.
+
+**Configuración activo-pasivo:**
+
+En esta configuración, el servidor principal se encuentra en el hospital de Blanes y actúa como el nodo activo, encargado de todas las operaciones de lectura y escritura. Este nodo es el punto central de la infraestructura y maneja todas las tareas críticas para el funcionamiento
+del sistema.
+
+Por otro lado, el segundo nodo se encuentra en la nube (cloud) y opera como el nodo pasivo. En este caso, el servidor en la nube permanece inactivo la mayor parte del tiempo, solo activándose en caso de que el nodo principal en el hospital falle o experimente algún problema. En tal situación, el servidor en la nube asume automáticamente las funciones del
+servidor principal para garantizar la continuidad del servicio y minimizar cualquier impacto en las operaciones del hospital.
+
+### Diagrama de funcionamiento:
+
+![1716150580593](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150580593.png)
+
+### Manual de instalacion y como se administran de los servidores
+
+1. Instalación del Servidor Físico en el hospital:
+
+* Determinas el hardware y sistema operativo del servidor físico. En nuestro caso es Debian12.
+* Configuración de la red del servidor para que esté conectada a la misma red que los usuarios del hospital.
+* Instalar Software necesario para llevar la gestión del hospital.
+
+2. Configurar el servidor de Réplica en la Nube en Amazon
+
+- Crear la cuenta de AWS
+- Lanzar una instancia EC2
+- Configuración de la seguridad. Hay que
+  destacar que es muy importante tener unos estándares de seguridad altos ya que
+  tratamos con datos personales de pacientes.
+- Instalación del software necesario en la
+  instancia EC2. Herramientas de monitorización, software de respaldo, etc.
+- Configuración de la Replicación de Datos.
+  Los datos al replicarse en ambos servidores tienen que estar disponibles por si
+  uno de ellos cae.
+
+3. Administrar ambos servidores
+
+* Monitorizar ambos servidores
+* Gestionar de usuarios y permisos
+* Configuración de las copias de Seguridad
+
+- Configurar la seguridad en ambas maquinas.
+  Como firewalls, VPN, detección de intrusiones.
+
+4. Técnica de balanceo
+
+- Podemos utilizar la técnica “Route 53
+  Latency Based Rotuing” que proporciona AWS. Esta técnica aprovecha la red para
+  dirigir el tráfico de los usuarios al servidor que tenga menos latencia.
+
+### Configuracion para tener alta disponibilidad de sistema de backup
+
+Primero creamos la máquina virtual y configuramos el postgres
+
+Una vez creada, la replicamos en otra MV para poder tener alta disponibilidad.
+
+Pasos para tener alta disponibilidad:
+
+En el nodo principal creamos el usuario de replicación y le damos privilegios de replicación
+
+![1716150878654](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150878654.png)
+
+Una vez hecho vamos a los siguientes fichero de configuración: postgresql.conf des comentamos las siguientes líneas:
+
+Abrimos el fichero
+
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)![1716150883700](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150883700.png)
+
+Configuramos la dirección ip que escuchara, podemos poner la ip ao localhost, en mi caso pondré la ip.
+
+![1716150891776](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150891776.png)
+
+Habilitar la replicación WAL: Aseguramos que el servidor principal esté escribiendo los registros WAL.
+
+Esta opción permite a postgres que escriba todo el contenido de cada pagina del disco en el archivo WAL.
+
+![1716150962259](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150962259.png)
+
+Una vez hecho los cambios guardamos y vamos al siguiente fichero en la misma ruta: pg_hba.conf
+
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif)![1716151047709](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151047709.png)
+
+Una vez dentro crearemos una línea la cual permitirá al nodo secundario conectándose con el usuario replica_user
+
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)![1716151051447](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151051447.png)
+
+Guardamos los cambios y pasamos al nodo secundario, una vez en el paramos el servicio
+postgresql con **systemctl stop portgresql.**
+
+Una vez parado el servicio ponemos y ejecutamos la siguiente comanda:
+
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image006.gif)![1716151057169](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151057169.png)
+
+Esta comanda elimina todos los archivos en el directorio de datos de la réplica para comenzar desde cero y dejar espacio para el directorio de datos del nodo principal.
+
+Después de que termine de eliminar los archivos ponemos la siguiente comanda:
+
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif)![1716151116391](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151116391.png)
+
+Este comando realiza una copia de seguridad de una base de datos PostgreSQL en un servidor remoto utilizando un flujo de datos continuo, habilita la configuración de replicación y almacena los datos de copia de seguridad en el directorio especificado.
+
+Después de que termine le otorgaremos la propiedad del directorio de datos al usuario
+postgres con la siguiente comanda:
+
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)![1716151120612](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151120612.png)
+
+Una vez hecho ponemos en marcha el servicio postgres con **systemctl start portgresql **y comprobamos su estado con **systemctl status portgresql.**
+
+![1716151131208](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151131208.png)
+
+COMPROVACION REPLICA:
+
+podemos apreciar en la siguiente imagen en la parte izquierda se encuentra el
+nodo principal y la parte derecha es el nodo secundario.
+
+![1716151142489](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/FX87/OneDrive/Documentos/GitHub/pagina/image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151142489.png)
+
+Para demostrar que la replica que hace de manera efectiva creare una tabla con un
+insert pequeño.
+
+![1716151211638](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151211638.png)
+
+Se creo una base de datos llamada bd_prueba la cual esta conectada al nodo principal
+
+![1716151217040](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151217040.png)
+
+Como podemos apreciar la ejecución se hizo correctamente, ahora comprobaremos las bases de datos.
+
+![1716151224887](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151224887.png)
+
+### Instalacion y configuracion backups
+
+Instalamos cron una herramienta la cual nos permite crear tareas y que se ejecuten de manera automática.
+
+1. Sudo apt update
+2. Sudo apt install cron
+
+Para poder acceder al fichero donde se crearán las tareas:
+
+Crontab -e
+
+**Creación y configuración del script de backup:![1716151498252](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151498252.png)**
+
+En le apartado **variables **se
+configuraron datos necesarios para que el script pueda acceder a la base de
+datos para asi buscar y crear la copia de seguridad.
+
+La función backup logico genera copia de la
+base de datos especificada (DB) la cual es la principal base de datos una vez
+obtenida la comprime y en caso de producirse un error se crearan logs.
+
+**Notificaciones de backup.**
+
+![1716151491614](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151491614.png)
+
+Para añadir el script tiene implementado unas funciones que notificaran al usuario mediante Gmail y telegram.
+
+Configuración del cron:
+
+![1716151523939](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151523939.png)
+
+**Guardar en la nube:**
+
+Para instalar onedrive en debian se aplicaron las siguientes comandas:
+
+sudo -- bash -c 'apt update && apt install --yes onedrive'
+
+una vez instalado escribimos por terminal onedrive la primera vez nos mostrara un link el cual tenemos que copiar y poner en el navegador, una vez en este tendremos que iniciar sesión y darle permiso para que acceda a la información.
+
+![1716151598706](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151598706.png)
+
+![1716151602085](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151602085.png)
+
+Una vez terminamos de hacer lo anterior copiamos la url y la ponemos en el terminal, no retornara que la autorización ha sido un éxito.
+
+![1716151622440](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151622440.png)
+
+Ahora lo sincronizamos:
+
+![1716151632472](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151632472.png)
+
+Una vez terminado ahora tendremos creada una carpeta onedrive, para ver la ruta podemos hacer **onedrive --display-config,** en esa ruta se creara una carpeta para los backups.
+
+![1716151675506](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151675506.png)
+
+Se añadieron dos líneas mas, una para hacer una copia del comprimido y después una para sincronizar el onedrive:
+
+![1716151690141](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151690141.png)
+
+Como podemos ver el fichero se subió correctamente
+
+![1716151707508](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151707508.png)
+
+## Dummy data
+
+Explicación del funcionamiento del script Dummy data.
+
+![1716151780936](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151780936.png)
+
+**CONEXIÓN CON LA BASE DE DATOS:**
+
+Esta parte nos permite establecer conexión a la base de datos para asi ejecutar los inserts que haremos mas adelante.
+
+![1716151816550](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151816550.png)
+
+**GENERACION Y INSERCION DE DATOS**
+
+Se a utilizando la biblioteca Faker para generar datos ficticios en español para varias tablas de la base de datos. Los tipos de datos incluyen nombres, apellidos, DNIs (Documento Nacional de Identidad), estudios, especialidades, currículos, años de experiencia, tipos de personal y letras aleatorias para DNIs de pacientes, después de generarlos inserta los datos ficticios generados en las respectivas tablas de la base de datos utilizando sentencias SQL de inserción.
+
+Parte del código como ejemplo:
+
+**Tabla PERSONAL**
+
+![1716151883892](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151883892.png)
+
+**Tabla MEDICO**
+
+![1716151890819](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151890819.png)
+
+**Tabla ENFERMERA**
+
+![1716151895481](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151895481.png)
+
+**Tabla VARIO**
+
+![1716151900167](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151900167.png)
+
+**Tabla PACIENTE**
+
+![1716151905002](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151905002.png)
+
+**Tabla RES_VIS**
+
+![1716151909707](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151909707.png)
+
+**COMPROBAR SI EL ID EXISTE:**
+
+Esta función comprueba si el id del medico existe esto se hace para garantizar la integridad de  referencia entre las tablas MEDICO Y ENFERMERA.
+
+![1716151927703](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151927703.png)
+
+F**UNCION PARA ELIMINAR LOS DATOS:**
+
+Una función para que en caso de que el usuario necesite eliminar los datos, esta función se llamara desde el menú una vez el usuario se haya verificado.
+
+![1716151953809](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151953809.png)
+
+Al final del script, se solicita al usuario que confirme si desea eliminar todos los datos insertados. Si el usuario confirma, se llama a la función eliminar_datos para eliminar los datos de las tablas. Si no, los datos permanecerán en la base de datos.
+
+![1716151973626](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151973626.png)
