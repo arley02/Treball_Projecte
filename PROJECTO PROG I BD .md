@@ -232,7 +232,7 @@ Primero generaremos un certificado SSL con una herramienta llamada openssl:
 
 Vamos a la ruta donde se encuentra el archivo de configuración de PostgreSQL, una vez dentro podemos crear una carpeta y dentro de ella crear los certificados. En mi caso, no la creé sino que los hice en el directorio principal donde está el archivo de configuración.
 
-![Untitled](imagenes/Untitled%201.png)
+![Untitled](image/PROJECTOPROGIBD/Untitled%201.png)
 
 Para generar la clave privada ejecutamos los comandos en la ruta mencionada anteriormente:
 
@@ -248,11 +248,11 @@ esto especifica el nombre del fichero de entrada para leer una clave, una vez he
 openssl rsa -in server.key -out server.key
 ```
 
-![Untitled](imagenes/Untitled%202.png)
+![Untitled](image/PROJECTOPROGIBD/Untitled%202.png)
 
 Una vez hecho podemos proceder a cambiar los permisos del fichero y el propietario como  se muestra en la imagen.
 
-![Untitled](imagenes/Untitled%203.png)
+![Untitled](image/PROJECTOPROGIBD/Untitled%203.png)
 
 - Chmod 400 server.key : con este comando cambiamos los permisos porque el propietario del archivo tiene permisos de lectura.
 - chown postgres:postgres server.key : cambia el propietario y el grupo al usuario postgres.
@@ -269,7 +269,7 @@ cp server.crt root.crt
 
 Una vez generados los cambios anteriores, procedemos a configurar para que se use el certificado y la clave generada en la ruta de configuración de PostgreSQL, en mi caso la ruta es /etc/postgresql/15/main/postgresql.conf y buscamos el apartado -SSL- como se llega a apreciar
 
-![Untitled](imagenes/Untitled%204.png)
+![Untitled](image/PROJECTOPROGIBD/Untitled%204.png)
 
 IMPORTANTE:
 
@@ -277,7 +277,7 @@ Dentro del fichero buscamos el apartado - SSL – y verificamos si el ssl es don
 
 Ahora configuramos el fichero pg_hba.conf y añadimos al final del fichero la siguiente línea:
 
-![1716065260567](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716065260567.png)
+![1716065260567](image/PROJECTOPROGIBD/1716065260567.png)
 
 Una vez modificado y guardado reiniciamos el servicio de postgres.
 Sudo systemctl restart postgresql o sudo service postgresql restart
@@ -288,15 +288,15 @@ COMPROVACIONES
 
 **SSL ON:**
 
-![1716065440042](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716065440042.png)
+![1716065440042](image/PROJECTOPROGIBD/1716065440042.png)
 
 **SSL OFF:**
 
-![1716065478474](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716065478474.png)
+![1716065478474](image/PROJECTOPROGIBD/1716065478474.png)
 
 **SSL CON RUTA ERRONEA: se recomienda usar la ruta absoluta para indicar la ubicacion de la clave.**
 
-![1716065583014](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716065583014.png)
+![1716065583014](image/PROJECTOPROGIBD/1716065583014.png)
 
 ### Documento AGPD
 
@@ -414,7 +414,7 @@ servidor principal para garantizar la continuidad del servicio y minimizar cualq
 
 ### Diagrama de funcionamiento:
 
-![1716150580593](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150580593.png)
+![1716150580593](image/PROJECTOPROGIBD/1716150580593.png)
 
 ### Manual de instalacion y como se administran de los servidores
 
@@ -462,75 +462,75 @@ Pasos para tener alta disponibilidad:
 
 En el nodo principal creamos el usuario de replicación y le damos privilegios de replicación
 
-![1716150878654](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150878654.png)
+![1716150878654](image/PROJECTOPROGIBD/1716150878654.png)
 
 Una vez hecho vamos a los siguientes fichero de configuración: postgresql.conf des comentamos las siguientes líneas:
 
 Abrimos el fichero
 
-![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)![1716150883700](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150883700.png)
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)![1716150883700](image/PROJECTOPROGIBD/1716150883700.png)
 
 Configuramos la dirección ip que escuchara, podemos poner la ip ao localhost, en mi caso pondré la ip.
 
-![1716150891776](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150891776.png)
+![1716150891776](image/PROJECTOPROGIBD/1716150891776.png)
 
 Habilitar la replicación WAL: Aseguramos que el servidor principal esté escribiendo los registros WAL.
 
 Esta opción permite a postgres que escriba todo el contenido de cada pagina del disco en el archivo WAL.
 
-![1716150962259](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716150962259.png)
+![1716150962259](image/PROJECTOPROGIBD/1716150962259.png)
 
 Una vez hecho los cambios guardamos y vamos al siguiente fichero en la misma ruta: pg_hba.conf
 
-![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif)![1716151047709](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151047709.png)
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif)![1716151047709](image/PROJECTOPROGIBD/1716151047709.png)
 
 Una vez dentro crearemos una línea la cual permitirá al nodo secundario conectándose con el usuario replica_user
 
-![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)![1716151051447](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151051447.png)
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)![1716151051447](image/PROJECTOPROGIBD/1716151051447.png)
 
 Guardamos los cambios y pasamos al nodo secundario, una vez en el paramos el servicio
 postgresql con **systemctl stop portgresql.**
 
 Una vez parado el servicio ponemos y ejecutamos la siguiente comanda:
 
-![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image006.gif)![1716151057169](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151057169.png)
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image006.gif)![1716151057169](image/PROJECTOPROGIBD/1716151057169.png)
 
 Esta comanda elimina todos los archivos en el directorio de datos de la réplica para comenzar desde cero y dejar espacio para el directorio de datos del nodo principal.
 
 Después de que termine de eliminar los archivos ponemos la siguiente comanda:
 
-![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif)![1716151116391](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151116391.png)
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image002.gif)![1716151116391](image/PROJECTOPROGIBD/1716151116391.png)
 
 Este comando realiza una copia de seguridad de una base de datos PostgreSQL en un servidor remoto utilizando un flujo de datos continuo, habilita la configuración de replicación y almacena los datos de copia de seguridad en el directorio especificado.
 
 Después de que termine le otorgaremos la propiedad del directorio de datos al usuario
 postgres con la siguiente comanda:
 
-![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)![1716151120612](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151120612.png)
+![](file:///C:/Users/FX87/AppData/Local/Temp/msohtmlclip1/01/clip_image004.gif)![1716151120612](image/PROJECTOPROGIBD/1716151120612.png)
 
 Una vez hecho ponemos en marcha el servicio postgres con **systemctl start portgresql **y comprobamos su estado con **systemctl status portgresql.**
 
-![1716151131208](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151131208.png)
+![1716151131208](image/PROJECTOPROGIBD/1716151131208.png)
 
 COMPROVACION REPLICA:
 
 podemos apreciar en la siguiente imagen en la parte izquierda se encuentra el
 nodo principal y la parte derecha es el nodo secundario.
 
-![1716152240041](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716152240041.png)
+![1716152240041](image/PROJECTOPROGIBD/1716152240041.png)
 
 Para demostrar que la replica que hace de manera efectiva creare una tabla con un
 insert pequeño.
 
-![1716151211638](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151211638.png)
+![1716151211638](image/PROJECTOPROGIBD/1716151211638.png)
 
 Se creo una base de datos llamada bd_prueba la cual esta conectada al nodo principal
 
-![1716151217040](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151217040.png)
+![1716151217040](image/PROJECTOPROGIBD/1716151217040.png)
 
 Como podemos apreciar la ejecución se hizo correctamente, ahora comprobaremos las bases de datos.
 
-![1716151224887](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151224887.png)
+![1716151224887](image/PROJECTOPROGIBD/1716151224887.png)
 
 ### Instalacion y configuracion backups
 
@@ -555,13 +555,13 @@ obtenida la comprime y en caso de producirse un error se crearan logs.
 
 **Notificaciones de backup.**
 
-![1716151491614](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151491614.png)
+![1716151491614](image/PROJECTOPROGIBD/1716151491614.png)
 
 Para añadir el script tiene implementado unas funciones que notificaran al usuario mediante Gmail y telegram.
 
 Configuración del cron:
 
-![1716151523939](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151523939.png)
+![1716151523939](image/PROJECTOPROGIBD/1716151523939.png)
 
 **Guardar en la nube:**
 
@@ -571,41 +571,41 @@ sudo -- bash -c 'apt update && apt install --yes onedrive'
 
 una vez instalado escribimos por terminal onedrive la primera vez nos mostrara un link el cual tenemos que copiar y poner en el navegador, una vez en este tendremos que iniciar sesión y darle permiso para que acceda a la información.
 
-![1716151598706](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151598706.png)
+![1716151598706](image/PROJECTOPROGIBD/1716151598706.png)
 
-![1716151602085](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151602085.png)
+![1716151602085](image/PROJECTOPROGIBD/1716151602085.png)
 
 Una vez terminamos de hacer lo anterior copiamos la url y la ponemos en el terminal, no retornara que la autorización ha sido un éxito.
 
-![1716151622440](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151622440.png)
+![1716151622440](image/PROJECTOPROGIBD/1716151622440.png)
 
 Ahora lo sincronizamos:
 
-![1716151632472](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151632472.png)
+![1716151632472](image/PROJECTOPROGIBD/1716151632472.png)
 
 Una vez terminado ahora tendremos creada una carpeta onedrive, para ver la ruta podemos hacer **onedrive --display-config,** en esa ruta se creara una carpeta para los backups.
 
-![1716151675506](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151675506.png)
+![1716151675506](image/PROJECTOPROGIBD/1716151675506.png)
 
 Se añadieron dos líneas mas, una para hacer una copia del comprimido y después una para sincronizar el onedrive:
 
-![1716151690141](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151690141.png)
+![1716151690141](image/PROJECTOPROGIBD/1716151690141.png)
 
 Como podemos ver el fichero se subió correctamente
 
-![1716151707508](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151707508.png)
+![1716151707508](image/PROJECTOPROGIBD/1716151707508.png)
 
 ## Dummy data
 
 Explicación del funcionamiento del script Dummy data.
 
-![1716151780936](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151780936.png)
+![1716151780936](image/PROJECTOPROGIBD/1716151780936.png)
 
 **CONEXIÓN CON LA BASE DE DATOS:**
 
 Esta parte nos permite establecer conexión a la base de datos para asi ejecutar los inserts que haremos mas adelante.
 
-![1716151816550](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151816550.png)
+![1716151816550](image/PROJECTOPROGIBD/1716151816550.png)
 
 **GENERACION Y INSERCION DE DATOS**
 
@@ -615,40 +615,40 @@ Parte del código como ejemplo:
 
 **Tabla PERSONAL**
 
-![1716151883892](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151883892.png)
+![1716151883892](image/PROJECTOPROGIBD/1716151883892.png)
 
 **Tabla MEDICO**
 
-![1716151890819](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151890819.png)
+![1716151890819](image/PROJECTOPROGIBD/1716151890819.png)
 
 **Tabla ENFERMERA**
 
-![1716151895481](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151895481.png)
+![1716151895481](image/PROJECTOPROGIBD/1716151895481.png)
 
 **Tabla VARIO**
 
-![1716151900167](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151900167.png)
+![1716151900167](image/PROJECTOPROGIBD/1716151900167.png)
 
 **Tabla PACIENTE**
 
-![1716151905002](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151905002.png)
+![1716151905002](image/PROJECTOPROGIBD/1716151905002.png)
 
 **Tabla RES_VIS**
 
-![1716151909707](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151909707.png)
+![1716151909707](image/PROJECTOPROGIBD/1716151909707.png)
 
 **COMPROBAR SI EL ID EXISTE:**
 
 Esta función comprueba si el id del medico existe esto se hace para garantizar la integridad de  referencia entre las tablas MEDICO Y ENFERMERA.
 
-![1716151927703](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151927703.png)
+![1716151927703](image/PROJECTOPROGIBD/1716151927703.png)
 
 F**UNCION PARA ELIMINAR LOS DATOS:**
 
 Una función para que en caso de que el usuario necesite eliminar los datos, esta función se llamara desde el menú una vez el usuario se haya verificado.
 
-![1716151953809](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151953809.png)
+![1716151953809](image/PROJECTOPROGIBD/1716151953809.png)
 
 Al final del script, se solicita al usuario que confirme si desea eliminar todos los datos insertados. Si el usuario confirma, se llama a la función eliminar_datos para eliminar los datos de las tablas. Si no, los datos permanecerán en la base de datos.
 
-![1716151973626](image/PROJECTOPROGIBD46da5a9111654bd9828d5b7ccd1af77f/1716151973626.png)
+![1716151973626](image/PROJECTOPROGIBD/1716151973626.png)
