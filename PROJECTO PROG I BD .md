@@ -543,7 +543,6 @@ Para poder acceder al fichero donde se crearán las tareas:
 
 Crontab -e
 
-
 **Creación y configuración del script de backup:**
 
 En le apartado **variables **se
