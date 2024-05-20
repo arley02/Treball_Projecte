@@ -4,13 +4,13 @@
 
 ### Modelo relacional (texto)
 
-[Model relacional.pdf](imagenes/Model_relacional.pdf)
+[Model relacional.pdf](image/PROJECTOPROGIBD/Model_relacional.pdf)
 
 ### Modelo entidad relación (imagen)
 
 presentación de la base de datos en modelo entidad relación:
 
-![Untitled](imagenes/Untitled.png)
+![Untitled](image/PROJECTOPROGIBD/Untitled.png)
 
 ### SQL
 
