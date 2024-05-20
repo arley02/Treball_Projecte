@@ -3,7 +3,7 @@
 ## INDEX
 
 1. Planificacion de proyecto
-2. Bloc de conectividad y loginç
+2. Bloc de conectividad y login
 3. diseño ER - Modelo relacional
 4. Esquema de seguridad
 5. Bloc de mantenimiento
