@@ -10,8 +10,6 @@ def login(credenciales):
     username = input("Introduïu el nom d'usuari: ")
     password = input("Introduïu la contrasenya: ")
     system("cls")
-    # Lista hosts casa
-    # hosts = ["10.04.254.28", "10.04.254.31"]
     # Lista hosts insti
     hosts = ["10.94.254.116", "10.94.255.2"]
     for host in hosts:
@@ -33,7 +31,7 @@ def login(credenciales):
                 elif x == "3":
                     pass
                 elif x == "4":
-                    ejecutar_dummy(host)
+                    ejecutar_dummy(username, password, host)
                 elif x == "5":
                     pass
                 elif x == "6":

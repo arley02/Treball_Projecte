@@ -2,12 +2,12 @@ import psycopg2
 from faker import Faker
 import random
 
-def ejecutar_dummy(host):
+def ejecutar_dummy(username, password, host):
     # Establecer conexión con la base de datos
     conn = psycopg2.connect(
         dbname="hospital",
-        user="postgres",
-        password="Blanes2121",
+        user=username,
+        password=password,
         host=host
     )
 
