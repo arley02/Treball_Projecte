@@ -2,4 +2,4 @@
 
 revisar el panel para ver en menu:
 
-![1716238762117](image/Readme/menu.png)
+![1716240221527](image/Readme/1716240221527.png)
