@@ -1,4 +1,3 @@
-
 ## SOLUCION DE ERROR DE REPLICACION
 
 si el adaptador en ambas maquinas es adaptador puente al cambiar de red la replicacion "fallara", para solucionarlo hacer el siguiente procedimiento:
@@ -19,8 +18,9 @@ si el adaptador en ambas maquinas es adaptador puente al cambiar de red la repli
 
    ![1716397743659](image/Readme/1716397743659.png)
 
-   una vez el servicio postgres iniciado lo comprovamos.
-6. 
+   6. una vez el servicio postgres iniciado lo comprovamos.
+
+      ![1716398393589](image/Readme/1716398393589.png)
 
 ## [Para más informacion de revise el markdown &#34;PROJECTO PROG I BD&#34;](https://github.com/arley02/Treball_Projecte/blob/main/PROJECTO%20PROG%20I%20BD%20.md#esquema-de-seguridad)
 
