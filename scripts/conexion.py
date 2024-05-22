@@ -11,7 +11,7 @@ def login(credenciales):
     password = input("Introduïu la contrasenya: ")
     system("cls")
     # Lista hosts insti
-    hosts = ["10.94.254.116", "10.94.255.2"]
+    hosts = ["192.168.56.112", "192.168.56.123"]
     for host in hosts:
         try:
             # Intentar la conexión con el host actual
